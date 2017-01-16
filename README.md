@@ -14,7 +14,7 @@
 * @mattgawarecki
 
 ## Getting Started:
-* Checkout individual project repositories listed (below)[#infrastructure]. Issues tagged `beginner-friendly` are good candidates for your first PR. Core maintainers and project leads are responsible for reviewing and merging all pull requests. In order make your first PR a positive experience we recommend reply on github or post in #assemble if you're interested in tackling your first issue. From there a maintainer or project lead will help you through the process.
+* Checkout individual project repositories listed [below](#infrastructure). Issues tagged `beginner-friendly` are good candidates for your first PR. Core maintainers and project leads are responsible for reviewing and merging all pull requests. In order make your first PR a positive experience we recommend reply on github or post in #assemble if you're interested in tackling your first issue. From there a maintainer or project lead will help you through the process.
 * Need to practice working with github in a group setting? Checkout [github-playground](https://github.com/Data4Democracy/github-playground)
 * Updates to documentation or readme are greatly appreciated and make for a great first PR. They do not need to be discussed in advance and will be merged as soon as possible.
 * Any problems, issues or questions along the way? DM @bstarling in Slack.  
