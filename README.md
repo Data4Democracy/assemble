@@ -17,6 +17,7 @@
 * Checkout individual project repositories listed [below](#infrastructure). Issues tagged `beginner-friendly` are good candidates for your first PR. Core maintainers and project leads are responsible for reviewing and merging all pull requests. In order make your first PR a positive experience we recommend reply on github or post in #assemble if you're interested in tackling your first issue. From there a maintainer or project lead will help you through the process.
 * Need to practice working with github in a group setting? Checkout [github-playground](https://github.com/Data4Democracy/github-playground)
 * Updates to documentation or readme are greatly appreciated and make for a great first PR. They do not need to be discussed in advance and will be merged as soon as possible.
+* Want to pick up some skills before diving in? Check out the [tutorials](https://github.com/Data4Democracy/tutorials) relevant to all D4D projects and chat about it in #learning.
 * Any problems, issues or questions along the way? DM @bstarling in Slack.  
 
 
@@ -35,7 +36,7 @@ Leveraging the Infrastructure group's fantastic work, the Curation team makes av
 * Check back soon for project repositories
 
 ### Tutorials and Example Notebooks:
-We need people who would like to write [tutorials](https://github.com/Data4Democracy/assemble/tree/master/tutorials) or script examples on how to do common tasks.  
+We need people who would like to write [tutorials](https://github.com/Data4Democracy/tutorials) or script examples on how to do common tasks.  
 * Do not worry if you are not an expert. Tutorials from the perspective of a beginner are great for other beginners.  
 
 ### Examples of work that has inspired us:   
