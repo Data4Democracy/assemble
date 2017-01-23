@@ -23,7 +23,9 @@
 
 ### Currently utilized skills
 Take a look at this list to get an idea of the tools and knowledge we're leveraging. If you're good with any of these, or if you'd like to get better at them, this might be a good project to get involved with!
+
 If you would like to get started with any of these skills, check out the [tutorials](https://github.com/Data4Democracy/tutorials) and chat about it in [#learning](https://datafordemocracy.slack.com/messages/learning/).
+
 * **Python 3** (scripting, web scraping, analysis, Jupyter notebooks, visualization)
 * **Data extraction/ETL**
 * **Data cleaning**
