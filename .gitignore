@@ -93,3 +93,6 @@ test.json
 
 # Editor swap files
 *.swp
+
+#mac file
+.DS_Store
