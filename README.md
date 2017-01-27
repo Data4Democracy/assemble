@@ -45,13 +45,13 @@ Leveraging the Infrastructure group's fantastic work, the Curation team makes av
 * [Reddit-Api-Miner](https://github.com/Data4Democracy/reddit-api-miner) to be folded in with [Collect-Social](https://github.com/Data4Democracy/collect-social)
 
 #### Data pipeline  
-We are looking for people to take our raw data and curate it so that it is analysis ready.  You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md).
+We are looking for people to take our raw data and curate it so that it is analysis ready.  You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md) and [issue #12](https://github.com/Data4Democracy/assemble/issues/12)
 
 Several projects areas in need of help:
 * [Info Source](./data/info_source.md) - **Goal**: consolidate the article and text data gathered from various websites into a single datastore.
 
 ### Curation Projects
-* [Oathkeepers](./data/otherkeepers.md) - Militia and white nationalist twitter data
+* [Oathkeepers](./data/oathkeepers.md) - Militia and white nationalist twitter data
 
 ### Tutorials and Example Notebooks:
 We need people who would like to write [tutorials](https://github.com/Data4Democracy/tutorials) or script examples on how to do common tasks.  
