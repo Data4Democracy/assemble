@@ -2,7 +2,7 @@
 
 If you have data you would like to share with the group. Submit a PR with a new `readme.md` in the `data` directory. General recommended structure is outlined below.
 
-**note** if this is a fully curated/structured dataset [data.world](https://github.com/Data4Democracy/read-this-first/blob/master/data-world.md) may be a better home. S3 is for raw or work in progress data.
+**NOTE:** if this is a fully curated/structured dataset [data.world](https://github.com/Data4Democracy/read-this-first/blob/master/data-world.md) may be a better home. S3 is for raw or work in progress data.
 
 ### Document directory structure
 Let people know where your data will be housed
