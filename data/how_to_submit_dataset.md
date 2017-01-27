@@ -23,7 +23,7 @@ far-right/
 * How/when was the data gathered
 * Data cleaning steps/process. Links to code used?
 * Assumptions made during analysis that may inform future analysis
-* See
+* Read about data governance [here](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md)
 
 ### Help others get started
 * Links to existing notebooks using the data

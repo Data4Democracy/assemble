@@ -5,8 +5,8 @@
 **Project Description:** Assemble is a [data for democracy](https://github.com/Data4Democracy) community working to build tools and infrastructure to enable the study of online communities and their characteristics. We have several active [repositories](#infrastructure-repositories), our goal is to build a toolkit which takes care of common tasks so researchers do not have to reinvent the wheel with each new project.  
 
 [**Project Leads:**](https://github.com/Data4Democracy/read-this-first/blob/master/lead-role-description.md)
-* @bstarling](https://datafordemocracy.slack.com/messages/@bstarling/)
-* @nick(https://datafordemocracy.slack.com/messages/@nick/)
+* [@bstarling](https://datafordemocracy.slack.com/messages/@bstarling/)
+* [@nick](https://datafordemocracy.slack.com/messages/@nick/)
 
 **Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
 * @sjackson
@@ -49,6 +49,7 @@ We are looking for people to take our raw data and curate it so that it is analy
 
 Raw data:
 * [Info Source](./data/info_source.md) - Details in [issue #12](https://github.com/Data4Democracy/assemble/issues/12)
+* Have data to add? Check our [how-to guide](./data/how_to_submit_dataset.md)
 
 ### Curation Projects
 * [Oathkeepers](./data/oathkeepers.md) - Militia and white nationalist twitter data
