@@ -31,4 +31,4 @@ far-right/
 
 #### Questions?
 * Join [#assemble](https://datafordemocracy.slack.com/messages/assemble/) and ask in slack
-* Contact @bstarling](https://datafordemocracy.slack.com/messages/@bstarling/) to arrange access.
+* Contact [@bstarling](https://datafordemocracy.slack.com/messages/@bstarling/) to arrange access.
