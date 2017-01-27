@@ -31,7 +31,8 @@ see [`aws configure`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-g
   * Since this process dumps the most recent articles without knowledge snapshot `big-government_1200.json` and `big-government_1600.json` could be the same if no new articles were published between 1200 hours and 1600 hours (UTC).
   * These files will need to be combined and de-duped before real analysis can start.
 * `stormfront`
-  * TBD - still gathering historic activity
+  * TBD - still gathering historic activity. 
+
 `archive` folder contains historic results (much larger files).
 * `breitbart`:
   * one file per news category. Entire collection is ~240k articles starting in early 2012.
