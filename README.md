@@ -14,6 +14,7 @@
 * @mattgawarecki
 
 ## Getting Started:
+For a list of first steps, please visit our [community guide](community-guide.md).
 
 ### Things you should know
 
