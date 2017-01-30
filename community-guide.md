@@ -29,13 +29,13 @@ Make sure to read our [readme](https://github.com/Data4Democracy/assemble) for b
     * **Bonus Round:** We acknowledge documentation is weak in this area. **PLEASE** help us improve it.
     * Up and running? Browse the open issues.
     * Find one you want to tackle? Post in an issue or ping a project lead on slack.
-    * Interested but not sure you'll be able to tackle the entire issue? Offer to tag team the issue with someone else. See someone offering to tag team an issue but not sure how to start. BE BRAVE, we have faith in you (and we'll be there to pick each other up if we stumble)
-  * Still interested in building tools?
+    * Interested but not sure you'll be able to tackle the entire issue? Offer to tag team the issue with someone else. See someone offering to tag team an issue but not sure how to start. **BE BRAVE**, we have faith in you (and we'll be there to pick each other up if we stumble)
+  * Wow! Still interested in building tools?
     * Propose a new tool by submitting a new issue with the tag `proposal`
     * Have an opinion about the discussion going on [here](https://github.com/Data4Democracy/assemble/issues/12)
 5. Want to mentor new members?
   * Don't feel **qualified**? Offer to help anyway. You will learn more by teaching than doing. See someone new join slack? Say hello, offer to help them get started. Stay on the lookout for people with questions, help them get up to speed! Have problems? Open issues, help match people with issues. This is **OUR** community. Everyone is empowered to step in and provide guidance/help/assistance where they see it is needed.
   * Feel qualified? This person does not exist, carry on
-  * **Bonus Points**: Improve this guide.
+  * **Bonus Round**: Improve this guide.
 6. Still not sure where to start or feel like #assemble may not be the project for you?
   * Introduce yourself in [#onboarding]((https://datafordemocracy.slack.com/messages/assemble/)). Start talking to project leads, let them know what you are interested in.
