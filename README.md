@@ -46,9 +46,13 @@ Leveraging the Infrastructure group's fantastic work, the Curation team makes av
 * [Reddit-Api-Miner](https://github.com/Data4Democracy/reddit-api-miner) to be folded in with [Collect-Social](https://github.com/Data4Democracy/collect-social)
 
 #### Data pipeline  
-We are looking for people to take our raw data and curate it so that it is analysis ready.  You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md)
+We are looking for people to take our raw data and curate it so that it is analysis ready. You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. [Eventador](http://eventador.io/) has gracioulsy donated infrastructure to assist with this effort.  
 
-Raw data:
+**Additional Resource:** 
+* Getting started with [Eventador](./eventador/README.md)
+* See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md). 
+
+**Raw data:** 
 * [Info Source](./data/info_source.md) - Details in [issue #12](https://github.com/Data4Democracy/assemble/issues/12)
 * Have data to add? Check our [how-to guide](./data/how_to_submit_dataset.md)
 
