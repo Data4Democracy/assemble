@@ -16,7 +16,7 @@
 
 ## Getting Started:
 * For a list of first steps, please visit our [community guide](community-guide.md).
-* Ready about how we use issue [labels](issue-labels-explained.md)
+* Read about how we use issue [labels](issue-labels-explained.md)
 
 
 ### Things you should know
