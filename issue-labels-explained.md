@@ -1,27 +1,30 @@
-`first-pr`: For first timers only. Issues with this label are meant to be a digestible to help people get up to speed with cloning the repository, making a change and creating a pull request. Please do not claim this issue unless it is your first pull request for this project.
+### Isue labels explained
+Issues are tagged with specific labels. This gives you a rough idea of what issue tag means.
 
-`beginner-friendly`: Good for people new to the project or technology stack used by the project. If you are experienced we encourage you not to claim these issues but instead post in comments offering to mentor a new person.
+**`first-pr`:** For first timers only. Issues with this label are meant to be a digestible to help people get up to speed with cloning the repository, making a change and creating a pull request. Please do not claim this issue unless it is your first pull request for this project.
 
-`documentation`: Request for help with documentation
+**`beginner-friendly`:** Good for people new to the project or technology stack used by the project. If you are experienced we encourage you not to claim these issues but instead post in comments offering to mentor a new person.
 
-`help-wanted`: Catch all label soliciting for help.
+**`documentation`:** Request for help with documentation
 
-`status-needs-grooming`: Issue is not fully defined. Either the person who opened the issue is not sure how to proceed or did not have time to complete. Indicates further research will be required to determine best path forward.
+**`help-wanted`:** Catch all label soliciting for help.
 
-`status-in-progress`: Someone is actively working on this issue. Please reach out to the person assigned this issue if you would like to contribute.
+**`status-needs-grooming`:** Issue is not fully defined. Either the person who opened the issue is not sure how to proceed or did not have time to complete. Indicates further research will be required to determine best path forward.
 
-`status-dev-ready`: Development task that is fully defined and ready to start.
+**`status-in-progress`:** Someone is actively working on this issue. Please reach out to the person assigned this issue if you would like to contribute.
 
-`status-blocked`: Not ready for development.
+**`status-dev-ready`:** Development task that is fully defined and ready to start.
 
-`data-viz`: Data visualization task.
+**`status-blocked`:** Not ready for development.
 
-`data-collection`: Data collection task.
+**`data-viz`:** Data visualization task.
 
-`modeling`: Data modeling, machine learning task.
+**`data-collection`:** Data collection task.
 
-`storytelling`: Need help crafting a story. Writing assignment.
+**`modeling`:** Data modeling, machine learning task.
 
-`discussion`: Indicates this issue is a public discussion but may not necessarily have a specific task associated to it.
+**`storytelling`:** Need help crafting a story. Writing assignment.
 
-`questions`: A question to or from the project maintainers.
+**`discussion`:** Indicates this issue is a public discussion but may not necessarily have a specific task associated to it.
+
+**`questions`:** A question to or from the project maintainers.
