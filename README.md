@@ -10,7 +10,7 @@
 
 **Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
 * [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/)
-* [@wwymak]((https://datafordemocracy.slack.com/messages/@wwymak/)
+* [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/)
 * [@mattgawarecki](https://datafordemocracy.slack.com/messages/@mattgawarecki/)
 
 
