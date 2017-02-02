@@ -9,18 +9,22 @@
 * [@nick](https://datafordemocracy.slack.com/messages/@nick/)
 
 **Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
-* @sjackson
-* @wwymak
-* @mattgawarecki
+* [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/)
+* [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/)
+* [@mattgawarecki](https://datafordemocracy.slack.com/messages/@mattgawarecki/)
+
 
 ## Getting Started:
-For a list of first steps, please visit our [community guide](community-guide.md).
+* For a list of first steps, please visit our [community guide](community-guide.md).
+* Read about how we use issue [labels](issue-labels-explained.md)
+
 
 ### Things you should know
 
 * **"First-timers" are welcome!** Whether you're trying to learn data science, hone your coding skills, or get started collaborating over the web, we're happy to help. *(Sidenote: with respect to Git and GitHub specifically, our [github-playground](https://github.com/Data4Democracy/github-playground) repo and the [#github-help](https://datafordemocracy.slack.com/messages/github-help/) Slack channel are good places to start.)*
 * **We believe good code is reviewed code.** All commits to this repository are approved by project maintainers and/or leads (listed above). The goal here is *not* to criticize or judge your abilities! Rather, sharing insights and achievements. Code reviews help us continually refine the project's scope and direction, as well as encourage the discussion we need for it to thrive.
 * **This README belongs to everyone.** If we've missed some crucial information or left anything unclear, edit this document and submit a pull request. We welcome the feedback! Up-to-date documentation is critical to what we do, and changes like this are a great way to make your first contribution to the project.
+
 
 ### Currently utilized skills
 Take a look at this list to get an idea of the tools and knowledge we're leveraging. If you're good with any of these, or if you'd like to get better at them, this might be a good project to get involved with!
