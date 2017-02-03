@@ -64,7 +64,7 @@ We are looking for people to take our raw data and curate it so that it is analy
 
 **Raw data:**
 * [Info Source](./data/info_source.md)
-* [Congressional Record](./data/congressional-record-archive)
+* [Congressional Record](./data/congressional-record.md)
 * [Discursive](./data/discursive.md)
 * Have data to add? Check our [how-to guide](./data/how_to_submit_dataset.md)
 
