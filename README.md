@@ -9,14 +9,20 @@
 * [@nick](https://datafordemocracy.slack.com/messages/@nick/)
 
 **Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
-* [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/)
-* [@wwymak]((https://datafordemocracy.slack.com/messages/@wwymak/)
-* [@mattgawarecki](https://datafordemocracy.slack.com/messages/@mattgawarecki/)
 
+* [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Community Detection)
+* [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/) (Community Detection, NLP)
+* [@henripal](https://datafordemocracy.slack.com/messages/@henripal/) (Assemble, Community Detection, NLP)
+* [@metame](https://datafordemocracy.slack.com/messages/@metame/) (collect-Social)
+* [@asragab](https://datafordemocracy.slack.com/messages/@metame/) (collect-social, assemble, data engineering)
+
+
+[**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
+* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
 
 ## Getting Started:
 * For a list of first steps, please visit our [community guide](community-guide.md).
-* Ready about how we use issue [labels](issue-labels-explained.md)
+* Read about how we use issue [labels](issue-labels-explained.md)
 
 
 ### Things you should know
@@ -50,10 +56,16 @@ Leveraging the Infrastructure group's fantastic work, the Curation team makes av
 * [Reddit-Api-Miner](https://github.com/Data4Democracy/reddit-api-miner) to be folded in with [Collect-Social](https://github.com/Data4Democracy/collect-social)
 
 #### Data pipeline  
-We are looking for people to take our raw data and curate it so that it is analysis ready.  You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md)
+We are looking for people to take our raw data and curate it so that it is analysis ready. You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. [Eventador](http://eventador.io/) has gracioulsy donated infrastructure to assist with this effort.  
 
-Raw data:
-* [Info Source](./data/info_source.md) - Details in [issue #12](https://github.com/Data4Democracy/assemble/issues/12)
+**Additional Resource:**
+* Getting started with [Eventador](./eventador/README.md)
+* See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md).
+
+**Raw data:**
+* [Info Source](./data/info_source.md)
+* [Congressional Record](./data/congressional-record.md)
+* [Discursive](./data/discursive.md)
 * Have data to add? Check our [how-to guide](./data/how_to_submit_dataset.md)
 
 ### Curation Projects
