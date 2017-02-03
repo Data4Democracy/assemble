@@ -32,5 +32,11 @@ class Article(scrapy.Item):
 
 
 class Record(scrapy.Item)
-    #TODO create item
-    pass
+    date = scrapy.Field()
+    category = scrapy.Field()
+    title = scrapy.Field()
+    url = scrapy.Field()
+    text_blob = scrapy.Field()
+    hrefs = scrapy.Field()
+    meta = scrapy.Field()
+
