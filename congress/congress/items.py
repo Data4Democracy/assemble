@@ -39,4 +39,4 @@ class Record(scrapy.Item)
     text_blob = scrapy.Field()
     hrefs = scrapy.Field()
     meta = scrapy.Field()
-    pass
+
