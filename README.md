@@ -9,11 +9,13 @@
 * [@nick](https://datafordemocracy.slack.com/messages/@nick/)
 
 **Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
+
 * [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Community Detection)
 * [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/) (Community Detection, NLP)
 * [@henripal](https://datafordemocracy.slack.com/messages/@henripal/) (Assemble, Community Detection, NLP)
 * [@metame](https://datafordemocracy.slack.com/messages/@metame/) (collect-Social)
 * [@asragab](https://datafordemocracy.slack.com/messages/@metame/) (collect-social, assemble, data engineering)
+
 
 [**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
 * [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
