@@ -13,6 +13,8 @@
 * [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/)
 * [@mattgawarecki](https://datafordemocracy.slack.com/messages/@mattgawarecki/)
 
+[**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
+* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
 
 ## Getting Started:
 * For a list of first steps, please visit our [community guide](community-guide.md).
