@@ -29,3 +29,8 @@ class Article(scrapy.Item):
     num_shares = scrapy.Field()
     num_comments = scrapy.Field()
     comment_hrefs = scrapy.Field()
+
+
+class Record(scrapy.Item)
+    #TODO create item
+    pass
