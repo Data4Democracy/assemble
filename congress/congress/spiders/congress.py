@@ -8,11 +8,12 @@ class Congress(scrapy.Spider):
     name = 'congress'
 
     def start_requests(self):
-        # TODO list of URL(s) to start carwl
+        # list of URL(s) to start crawl
+        urls = [
+            'https://www.congress.gov/congressional-record/browse-by-date/'
 
-
-        # for url in urls:
-        # TODO  call parse_date_summary_page
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse_date_summary_page)
 
     def parse_date_summary_page(self, response):
         '''
