@@ -12,6 +12,7 @@
 * [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/)
 * [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/)
 * [@mattgawarecki](https://datafordemocracy.slack.com/messages/@mattgawarecki/)
+* [@henripal](https://datafordemocracy.slack.com/messages/@henripal/)
 
 [**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
 * [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
