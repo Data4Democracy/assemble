@@ -31,7 +31,7 @@ class Article(scrapy.Item):
     comment_hrefs = scrapy.Field()
 
 
-class Record(scrapy.Item)
+class Record(scrapy.Item):
     date = scrapy.Field()
     category = scrapy.Field()
     title = scrapy.Field()
