@@ -1,4 +1,5 @@
-from congress.items import record
+import scrapy
+from congress.items import Record
 
 
 class Congress(scrapy.Spider):
@@ -11,6 +12,7 @@ class Congress(scrapy.Spider):
         # list of URL(s) to start crawl
         urls = [
             'https://www.congress.gov/congressional-record/browse-by-date/'
+            ]
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse_date_summary_page)
@@ -52,21 +54,21 @@ class Congress(scrapy.Spider):
         text_blob = None
 
         # TODO parse this "115th Congress, 1st Session<br />Issue: Vol. 163, No. 17"
-            '''
-            # Congress
-            # Session
-            # Issue
-            # Volume
-            # Number
-            '''
+        '''
+        # Congress
+        # Session
+        # Issue
+        # Volume
+        # Number
+        '''
         # TODO needs better name
-        meta = dict {
-            'congress': None,
-            'session': None,
-            'Issue': None,
-            'Volume': None,
-            'Number': None
-        }
+        # meta = dict {
+        #     'congress': None,
+        #     'session': None,
+        #     'Issue': None,
+        #     'Volume': None,
+        #     'Number': None
+        # }
 
         item = Record(
             #TODO build item

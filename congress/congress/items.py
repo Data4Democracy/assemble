@@ -31,7 +31,7 @@ class Article(scrapy.Item):
     comment_hrefs = scrapy.Field()
 
 
-class Record(scrapy.Item)
+class Record(scrapy.Item):
     date = scrapy.Field()
     category = scrapy.Field()
     title = scrapy.Field()
@@ -39,4 +39,3 @@ class Record(scrapy.Item)
     text_blob = scrapy.Field()
     hrefs = scrapy.Field()
     meta = scrapy.Field()
-
