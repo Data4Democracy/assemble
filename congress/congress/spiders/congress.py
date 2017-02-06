@@ -36,50 +36,59 @@ class Congress(scrapy.Spider):
         '''
 
         # TODO date (congressional date of record) (YYYY-MM-DD format)
-        raw_date=response.xpath('//div[@class="cr-issue"]/h3/text()').extract_first()
-        ## Need index 0 because xpath returns list of length 1
-        date = None
+        date = response.xpath('//div[@class="cr-issue"]/h3/text()').extract_first()
+        #Processing steps needed: Proper datetime formatting
 
         # TODO Title
-        raw_title=response.xpath('//div[@class="wrapper_std"]/h2').extract_first()
-        title = None
+        title = response.xpath('//div[@class="wrapper_std"]/h2/text()').extract()
 
         # TODO url (current url)
-        raw_url=response.xpath('//link[contains(@href,"congressional-record/2017")]/@href').extract_first()
-        url = None
-
+        url = response.xpath('//link[contains(@href,"congressional-record/2017")]/@href').extract_first()
+	
         # TODO category: (daily digest, senate, house, extensions)
-        category = None
+        raw_category = response.xpath('//span[@class="quiet"]/text()').extract_first()
+        raw_category_rmdate = raw_category.split('-')[0]
+        raw_category_rmpar = raw_category_rmdate.split('(')[1]
+        category = raw_category_rmpar.strip()
 
         # TODO hrefs: any references in text (EX: pages numbers)
         hrefs = None
 
         # TODO text_blob: (what was actually said)
-        raw_text=response.xpath('//pre[@class="styled"]').extract_first()
-        text_blob = None
+        text_blob = response.xpath('//pre[@class="styled"]/text()').extract()
+        #Processing steps needed: Remove trailing spaces and line breaks
 
         # TODO parse this "115th Congress, 1st Session<br />Issue: Vol. 163, No. 17"
+        doc_info = response.xpath('//div[@class="cr-issue"]/h4/text()').extract()
+        congress_session = doc_info[0].split(',')
+		congress = congress_session[0]
+		session = congress_session[1]
+		vol_no = doc_info[1].split(',')
+		vol = vol_no[0].split(':')[1]
+		no = vol_no[1]
         '''
         # Congress
         # Session
-        # Issue
+        # Issue -- is comprised of Volume and Number
         # Volume
         # Number
         '''
-        # TODO needs better name
-        # meta = dict {
-        #     'congress': None,
-        #     'session': None,
-        #     'Issue': None,
-        #     'Volume': None,
-        #     'Number': None
-        # }
+        doc_info = dict {
+             'congress': congress,
+             'session': session,
+             'Volume': vol,
+             'Number': no
+         }
 
-        item = Record(
-            #TODO build item
-            # date = date
-            # url = url
-            # etc. etc.
-        )
+        item = Record{
+
+            'date' = date
+            'title' = title
+            'url' = url
+            'category' = category
+            'text'= text_blob
+            'doc_info'= doc_info
+            
+        }
 
         yield item
