@@ -8,7 +8,7 @@
 * [@bstarling](https://datafordemocracy.slack.com/messages/@bstarling/)
 * [@nick](https://datafordemocracy.slack.com/messages/@nick/)
 
-**Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
+[**Maintainers:**](./roles/project_maintainer.md) Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
 
 * [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Community Detection)
 * [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/) (Community Detection, NLP)
