@@ -23,7 +23,7 @@ class Congress(scrapy.Spider):
         Ex : https://www.congress.gov/congressional-record/2017/02/01/senate-section
         the first link would find "Senate" then "Prayer" etc.
         '''
-
+		
         # TODO for each category --
             # approach 1 follow first link and keep clicking "next" until done
             # approach 2 get all links and submit each link to be parsed.
@@ -36,12 +36,16 @@ class Congress(scrapy.Spider):
         '''
 
         # TODO date (congressional date of record) (YYYY-MM-DD format)
+        raw_date=response.xpath('//div[@class="cr-issue"]/h3/text()').extract_first()
+        ## Need index 0 because xpath returns list of length 1
         date = None
 
         # TODO Title
+        raw_title=response.xpath('//div[@class="wrapper_std"]/h2').extract_first()
         title = None
 
         # TODO url (current url)
+        raw_url=response.xpath('//link[contains(@href,"congressional-record/2017")]/@href').extract_first()
         url = None
 
         # TODO category: (daily digest, senate, house, extensions)
@@ -51,6 +55,7 @@ class Congress(scrapy.Spider):
         hrefs = None
 
         # TODO text_blob: (what was actually said)
+        raw_text=response.xpath('//pre[@class="styled"]').extract_first()
         text_blob = None
 
         # TODO parse this "115th Congress, 1st Session<br />Issue: Vol. 163, No. 17"
