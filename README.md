@@ -19,6 +19,7 @@
 
 [**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
 * [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
+* [@ccarey](https://datafordemocracy.slack.com/messages/@ccarey/)
 
 ## Getting Started:
 * For a list of first steps, please visit our [community guide](community-guide.md).
