@@ -15,10 +15,11 @@
 * [@henripal](https://datafordemocracy.slack.com/messages/@henripal/) (Assemble, Community Detection, NLP)
 * [@metame](https://datafordemocracy.slack.com/messages/@metame/) (collect-Social)
 * [@asragab](https://datafordemocracy.slack.com/messages/@metame/) (collect-social, assemble, data engineering)
+* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/) (collect-social, onboarding, tutorials, twitter-analysis)
 
 
 [**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
-* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
+
 * [@ccarey](https://datafordemocracy.slack.com/messages/@ccarey/)
 
 ## Getting Started:
