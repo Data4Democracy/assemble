@@ -9,7 +9,7 @@ discursive/
 ```
 
 List directory contents with AWS CLI
-`aws s3 ls s3://discursive --profile <credential_profile>` see [`aws configure`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+`aws s3 ls s3://far-right/discursive --profile <credential_profile>` see [`aws configure`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
 Notes on the datasets in this directory:
 
