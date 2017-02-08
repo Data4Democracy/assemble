@@ -39,3 +39,7 @@ class Record(scrapy.Item):
     text_blob = scrapy.Field()
     hrefs = scrapy.Field()
     meta = scrapy.Field()
+    congress = scrapy.Field()
+    session = scrapy.Field()
+    Volume = scrapy.Field()
+    Number = scrapy.Field()

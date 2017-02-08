@@ -8,4 +8,6 @@
 
 class CongressPipeline(object):
     def process_item(self, item, spider):
+        # full_text = ""
+        # item['text_blob'] = full_text
         return item
