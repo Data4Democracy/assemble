@@ -8,15 +8,19 @@
 * [@bstarling](https://datafordemocracy.slack.com/messages/@bstarling/)
 * [@nick](https://datafordemocracy.slack.com/messages/@nick/)
 
-**Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
+[**Maintainers:**](./roles/project_maintainer.md) Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
+
 * [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Community Detection)
 * [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/) (Community Detection, NLP)
 * [@henripal](https://datafordemocracy.slack.com/messages/@henripal/) (Assemble, Community Detection, NLP)
 * [@metame](https://datafordemocracy.slack.com/messages/@metame/) (collect-Social)
 * [@asragab](https://datafordemocracy.slack.com/messages/@metame/) (collect-social, assemble, data engineering)
+* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/) (collect-social, onboarding, tutorials, twitter-analysis)
+
 
 [**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
-* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
+
+* [@ccarey](https://datafordemocracy.slack.com/messages/@ccarey/)
 
 ## Getting Started:
 * For a list of first steps, please visit our [community guide](community-guide.md).
@@ -62,7 +66,7 @@ We are looking for people to take our raw data and curate it so that it is analy
 
 **Raw data:**
 * [Info Source](./data/info_source.md)
-* [Congressional Record](./data/congressional-record-archive)
+* [Congressional Record](./data/congressional-record.md)
 * [Discursive](./data/discursive.md)
 * Have data to add? Check our [how-to guide](./data/how_to_submit_dataset.md)
 
