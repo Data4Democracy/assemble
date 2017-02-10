@@ -32,6 +32,12 @@ see [`aws configure`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-g
   * These files will need to be combined and de-duped before real analysis can start.
 * `stormfront`
   * TBD - still gathering historic activity. 
+* `radix`
+  * Running 2x daily (noon and midnight UTC)
+* `americanren`
+  * Running 2x daily (noon and midnight UTC)
+* `4chan`
+  * Running 2x daily (noon and midnight UTC)
 
 `archive` folder contains historic results (much larger files).
 * `breitbart`:
