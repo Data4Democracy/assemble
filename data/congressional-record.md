@@ -36,3 +36,13 @@ start_page
 end_page
 text
 ```
+
+We are adding the current record on a daily basis. Live data is dumped twice a day at s3://far-right/info-source/daily/<DATE>/congress/
+Replace <DATE> with the date you want, formatted as YYYYMMDD
+
+Example:
+```
+aws s3 ls s3://far-right/info-source/daily/20170212/congress/ --human-readable
+2017-02-11 19:08:14    1.1 MiB congress_0007.json
+2017-02-12 07:08:09    1.1 MiB congress_1207.json
+```
