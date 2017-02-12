@@ -10,7 +10,7 @@
 
 [**Maintainers:**](./roles/project_maintainer.md) Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
 
-* [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Subject Matter)
+* [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Subject Matter Knowledge)
 * [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/) (Community Detection, NLP)
 * [@henripal](https://datafordemocracy.slack.com/messages/@henripal/) (Assemble, Community Detection, NLP)
 * [@metame](https://datafordemocracy.slack.com/messages/@metame/) (collect-Social)
