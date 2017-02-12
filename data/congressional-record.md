@@ -37,8 +37,8 @@ end_page
 text
 ```
 
-We are adding the current record on a daily basis. Live data is dumped twice a day at s3://far-right/info-source/daily/<DATE>/congress/
-Replace <DATE> with the date you want, formatted as YYYYMMDD
+We are adding the current record on a daily basis. Live data is dumped twice a day at `s3://far-right/info-source/daily/<DATE>/congress/`
+Replace `<DATE>` with the date you want, formatted as YYYYMMDD
 
 Example:
 ```
