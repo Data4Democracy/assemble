@@ -1,7 +1,11 @@
 
 # Eventador README
 
-### Getting Started
+### Use Cases
+
+Eventador.io is a real-time data streaming platform. It allows for rich capture, mutation, aggregation, and delivery to various end-points. It's not an 'do everything' database, but rather a platform for when real-time data compels, enriches, or tells a story in a way that batch one-off data just can't.
+
+## Getting Started
 
 Eventador.io is a real time data processing platform that is available to the project free of charge. To use it do the following:
 
@@ -34,3 +38,14 @@ Here are some (hopefully) helpful resources:
 - [Examples](https://github.com/Eventador/examples)
 - [Command Line](http://www.kennygorman.com/tactical-kafka)
 - [Getting Connected](http://www.eventador.io/getting-connected.html)
+
+## When Eventador.io makes sense for your project
+
+Eventador.io is best used when creating stories around real-time data or data that has high
+value in it's immediate form. It's great when your source of data is dynamic, and the resulting analysis, report, graphic, dashboard or whatever is also dynamic.
+
+## Examples and Hypothetical use Cases
+
+These are pie in the sky type scenarios where the Eventador.io platform would be a meaningful component allowing the Data Scientist to simple worry about the data itself and not sweat the finer points of real-time data distribution. Hopefully these use cases give you inspiration and ideas. Please contribute!
+
+A list of potential use-cases, and created pipelines is available here: https://github.com/Data4Democracy/assemble/tree/master/eventador/pipelines
