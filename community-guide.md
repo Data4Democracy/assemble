@@ -16,7 +16,7 @@ Make sure to read our [readme](https://github.com/Data4Democracy/assemble) for b
 3. Are you still interested in doing analysis?
   * Can't think of any good questions to ask? Welcome to the hardest part of "data science"
   * Yes? Propose a new project by submitting a new issue with the tag `proposal`.
-  * **Bonus Round:** Have anything to add [here](https://github.com/Data4Democracy/discursive/issues/17) or [here](https://github.com/Data4Democracy/discursive/issues/4)?
+  * **Bonus Round:** Want to work on [parsing/clearning for NLP](https://github.com/Data4Democracy/assemble/issues/25) or [linguistic modeling](https://github.com/Data4Democracy/assemble/issues/26)? Or maybe on community detection [(option 1)](https://github.com/Data4Democracy/assemble/issues/23) [(option 2)](https://github.com/Data4Democracy/assemble/issues/22) [(option 3)](https://github.com/Data4Democracy/assemble/issues/21).
 4. Are you interested in building tools?
   * No? Skip
   * Yes?
