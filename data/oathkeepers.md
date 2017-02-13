@@ -13,7 +13,8 @@ far-right/
 ```
 
 List directory contents with AWS CLI
-`aws s3 ls s3://far-right/twitter/oathkeepers/ --profile <credential_profile>` see [`aws configure`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+`aws s3 ls s3://far-right/twitter/oathkeepers/ --profile <credential_profile>` see [`aws configure`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).  
+For aws credentials for read-only access, ping [@bstarling](https://datafordemocracy.slack.com/messages/@bstarling/), [@nick](https://datafordemocracy.slack.com/messages/@nick/), [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/), [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/), or [@divya](https://datafordemocracy.slack.com/messages/@divya/).
 
 Notes on the datasets in this directory:
 
