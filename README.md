@@ -8,19 +8,31 @@
 * [@bstarling](https://datafordemocracy.slack.com/messages/@bstarling/)
 * [@nick](https://datafordemocracy.slack.com/messages/@nick/)
 
-**Maintainers:** Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
-* @sjackson
-* @wwymak
-* @mattgawarecki
+[**Maintainers:**](./roles/project_maintainer.md) Maintainers have write access to the repository. They are responsible for reviewing pull requests, providing feedback and ensuring consistency.
+
+* [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Subject Matter Knowledge)
+* [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/) (Community Detection, NLP)
+* [@henripal](https://datafordemocracy.slack.com/messages/@henripal/) (Assemble, Community Detection, NLP)
+* [@metame](https://datafordemocracy.slack.com/messages/@metame/) (collect-Social)
+* [@asragab](https://datafordemocracy.slack.com/messages/@asragab/) (collect-social, assemble, data engineering)
+* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/) (collect-social, onboarding, tutorials, twitter-analysis)
+
+
+[**Project Ambassadors:**](https://github.com/Data4Democracy/assemble/blob/master/roles/project_ambassador.md)
+
+* [@ccarey](https://datafordemocracy.slack.com/messages/@ccarey/)
 
 ## Getting Started:
-For a list of first steps, please visit our [community guide](community-guide.md).
+* For a list of first steps, please visit our [community guide](community-guide.md).
+* Read about how we use issue [labels](issue-labels-explained.md)
+
 
 ### Things you should know
 
 * **"First-timers" are welcome!** Whether you're trying to learn data science, hone your coding skills, or get started collaborating over the web, we're happy to help. *(Sidenote: with respect to Git and GitHub specifically, our [github-playground](https://github.com/Data4Democracy/github-playground) repo and the [#github-help](https://datafordemocracy.slack.com/messages/github-help/) Slack channel are good places to start.)*
 * **We believe good code is reviewed code.** All commits to this repository are approved by project maintainers and/or leads (listed above). The goal here is *not* to criticize or judge your abilities! Rather, sharing insights and achievements. Code reviews help us continually refine the project's scope and direction, as well as encourage the discussion we need for it to thrive.
 * **This README belongs to everyone.** If we've missed some crucial information or left anything unclear, edit this document and submit a pull request. We welcome the feedback! Up-to-date documentation is critical to what we do, and changes like this are a great way to make your first contribution to the project.
+
 
 ### Currently utilized skills
 Take a look at this list to get an idea of the tools and knowledge we're leveraging. If you're good with any of these, or if you'd like to get better at them, this might be a good project to get involved with!
@@ -46,10 +58,16 @@ Leveraging the Infrastructure group's fantastic work, the Curation team makes av
 * [Reddit-Api-Miner](https://github.com/Data4Democracy/reddit-api-miner) to be folded in with [Collect-Social](https://github.com/Data4Democracy/collect-social)
 
 #### Data pipeline  
-We are looking for people to take our raw data and curate it so that it is analysis ready.  You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md)
+We are looking for people to take our raw data and curate it so that it is analysis ready. You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. [Eventador](http://eventador.io/) has gracioulsy donated infrastructure to assist with this effort.  
 
-Raw data:
-* [Info Source](./data/info_source.md) - Details in [issue #12](https://github.com/Data4Democracy/assemble/issues/12)
+**Additional Resource:**
+* Getting started with [Eventador](./eventador/README.md)
+* See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md).
+
+**Raw data:**
+* [Info Source](./data/info_source.md)
+* [Congressional Record](./data/congressional-record.md)
+* [Discursive](./data/discursive.md)
 * Have data to add? Check our [how-to guide](./data/how_to_submit_dataset.md)
 
 ### Curation Projects
