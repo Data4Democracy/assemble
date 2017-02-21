@@ -17,7 +17,16 @@ Notes on the datasets in this directory:
 **Directory structure and content:**
 The Discursive tweet collection in S3 follows the pattern of year -> month -> day -> hour -> filename.json
 
-These files are the result of streaming that is executed on a cron job running every fifteen minutes, collecting five thousand tweets per job (as of the creation of this document we have about eleven million). Sometimes, tweets won't be collected resulting in a gap (i.e. an hour is missing from a day, a day is missing from a month, etc.). You should consider this when designing your ingestion process (i.e. workaround failures for a file read). We expect those scenarios to be infrquent. 
+These files are the result of streaming that is executed on a cron job running every fifteen minutes, collecting five thousand tweets per job (as of the creation of this document we have about eleven million). Sometimes, tweets won't be collected resulting in a gap (i.e. an hour is missing from a day, a day is missing from a month, etc.). You should consider this when designing your ingestion process (i.e. workaround failures for a file read). We expect those scenarios to be infrequent. 
+
+Currently, our collection is based on the following search terms:  
+`cucks`  
+`breitbart`   
+`Oath Keeper`   
+`III%`  
+`MAGA`  
+`WAAR`  
+`Article V`  
 
 **Tweet fields available:**
 
