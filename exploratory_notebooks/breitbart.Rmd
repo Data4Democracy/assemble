@@ -1,0 +1,188 @@
+---
+title: "Breitbart"
+output:
+  html_document: default
+---
+
+Load necessary libraries.
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(jsonlite)
+```
+
+Import Breitbart metadata from data.world. This is approximately 150 MB, so it may take time. (Check in #far-right Slack for more info about obtaining access.)
+
+```{r}
+extract_list <- function(l) {
+  strsplit(gsub("('|\\[|\\]| )", "", l), ',')
+}
+
+bb <- read_tsv('https://query.data.world/s/bbokc1f08to11j19j5axvkrcv') %>%
+  mutate(urls = mapply(extract_list, hrefs)) %>%
+  select(date, author, title, lead, category, urls)
+```
+
+View a sample of the data.
+
+```{r}
+bb
+```
+
+See the number of articles published by year.
+
+```{r}
+bb %>%
+  mutate(time_floor = floor_date(date, unit = "1 year")) %>%
+  group_by(time_floor) %>%
+  summarize(count = n())
+```
+
+And arrange them by number of articles.
+
+```{r}
+bb %>%
+  mutate(time_floor = floor_date(date, unit = "1 year")) %>%
+  group_by(time_floor) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+What months had the most publications?
+
+```{r}
+bb %>%
+  mutate(time_floor = floor_date(date, unit = "1 month")) %>%
+  group_by(time_floor) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+Most common authors?
+
+```{r}
+bb %>%
+  group_by(author) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+Most common categories?
+
+```{r}
+bb %>%
+  group_by(category) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+Column plot of categories published per year.
+
+```{r}
+bb %>%
+  mutate(time_floor = floor_date(date, unit = "1 year")) %>%
+  group_by(time_floor, category) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, fill = category)) +
+  geom_col() +
+  xlab('Date') +
+  ylab('Articles') +
+  ggtitle(paste('Articles published on Breitbart.com, by category, by year.'))
+
+```
+
+Compare categories published per year with a line plot.
+
+```{r}
+bb %>%
+  mutate(time_floor = floor_date(date, unit = "1 year")) %>%
+  group_by(time_floor, category) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, color = category)) +
+  geom_line() +
+  xlab('Date') +
+  ylab('Articles') +
+  ggtitle(paste('Articles published on Breitbart.com, by category, by year.'))
+```
+
+List most popular URLs linked to from articles.
+
+```{r}
+unlist(bb$urls) %>%
+  as_tibble() %>%
+  mutate(url = value) %>%
+  select(url) %>%
+  group_by(url) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+And extract the root domains/subdomains from the list of URLs and list the most frequently cited sites.
+
+```{r}
+extract_domain <- function(url) {
+  return(gsub('www.', '', unlist(strsplit(unlist(strsplit(as.character(url), '//'))[2], '/'))[1]))
+}
+
+domain_count <- unlist(bb$urls) %>%
+  as_tibble() %>%
+  mutate(url = value) %>%
+  select(url) %>%
+  mutate(domain = mapply(extract_domain, url)) %>%
+  filter(!is.na(domain)) %>%
+  group_by(domain) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+
+domain_count
+```
+
+Plot the most common domains.
+
+```{r}
+domain_count %>%
+  filter(count >= 7000) %>%
+  mutate(domain = reorder(domain, count)) %>%
+  ggplot(aes(domain, count, fill = domain)) +
+  geom_bar(stat = 'identity') +
+  xlab('Site') +
+  ylab('Number of links') +
+  ggtitle('Domains most frequently linked from Breitbart.com articles') +
+  theme(legend.position="none") +
+  coord_flip()
+```
+
+And by percentage...
+
+```{r}
+total_links <- sum(domain_count$count)
+
+domain_count %>%
+  mutate(domain = reorder(domain, count),
+         share = count/total_links) %>%
+  filter(count > 7000) %>%
+  ggplot(aes(domain, share, fill = domain)) +
+  geom_bar(stat = 'identity') +
+  xlab('Site') +
+  ylab('Percentage of links') +
+  ggtitle('Domains most frequently linked from Breitbart.com articles') +
+  theme(legend.position="none") +
+  coord_flip()
+```
+
+Plot the most common domains other than Breitbart.com.
+
+```{r}
+domain_count %>%
+  filter(count >= 5000,
+         !grepl('breitbart.com', domain)) %>%
+  mutate(domain = reorder(domain, count)) %>%
+  ggplot(aes(domain, count, fill = domain)) +
+  geom_bar(stat = 'identity') +
+  xlab('Site') +
+  ylab('Number of links') +
+  ggtitle('Domains most frequently linked from Breitbart.com articles') +
+  theme(legend.position="none") +
+  coord_flip()
+```
