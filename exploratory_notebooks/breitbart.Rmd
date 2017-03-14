@@ -186,3 +186,91 @@ domain_count %>%
   theme(legend.position="none") +
   coord_flip()
 ```
+
+Maybe all these `twitter.com` URLs are just links to author bios? Let's find out...
+
+```{r}
+twitter_urls <- unlist(bb$urls) %>%
+  as_tibble() %>%
+  mutate(url = value) %>%
+  select(url) %>%
+  filter(grepl('https://twitter.com', url)) %>%
+  group_by(url) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+How many are statuses?
+
+```{R}
+twitter_urls %>%
+  filter(grepl('/status/', url)) %>%
+  summarize(total = sum(count))
+```
+
+How many are hashtag archives?
+
+```{R}
+twitter_urls %>%
+  filter(grepl('/hashtag/', url)) %>%
+  summarize(total = sum(count))
+```
+
+How many are search results?
+
+```{R}
+twitter_urls %>%
+  filter(grepl('/search', url)) %>%
+  summarize(total = sum(count))
+```
+
+How many are user accounts?
+
+```{R}
+find_url_length <- function(url) {
+  return(length(unlist(strsplit(url, '/'))))
+}
+
+twitter_urls %>%
+  filter(mapply(find_url_length, url) == 4,
+         !grepl('/search?', url), # some search query URLs are length 4
+         !grepl('/status/', url), # probably not necessary, just in case
+         !grepl('hashtag', url)) %>% # also probably not necessary
+  summarize(total = sum(count))
+```
+
+Now put it all together and redo the domain frequency count without counting user accounts as twitter.com sources.
+
+```{r}
+domain_count_no_twitter_profiles <- unlist(bb$urls) %>%
+  as_tibble() %>%
+  mutate(url = value) %>%
+  select(url) %>%
+  filter(!grepl('https://twitter.com', url)) %>%
+  full_join(unlist(bb$urls) %>%
+              as_tibble() %>%
+              mutate(url = value) %>%
+              select(url) %>%
+              filter(grepl('https://twitter.com', url)) %>%
+              filter(mapply(find_url_length, url) == 4,
+                     !grepl('/search?', url),
+                     !grepl('/status/', url),
+                     !grepl('hashtag', url))
+            ) %>%
+  mutate(domain = mapply(extract_domain, url)) %>%
+  filter(!is.na(domain)) %>%
+  group_by(domain) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(domain = reorder(domain, count)) 
+
+domain_count_no_twitter_profiles %>%
+  filter(count >= 7000) %>%
+  ggplot(aes(domain, count, fill = domain)) +
+    geom_bar(stat = 'identity') +
+    xlab('Site') +
+    ylab('Number of links') +
+    ggtitle('Domains most frequently linked from Breitbart.com articles,\nwithout Twitter profile links (typically for article authors)') +
+    theme(legend.position="none") +
+    coord_flip()
+```
