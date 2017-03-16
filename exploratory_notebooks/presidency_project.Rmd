@@ -1,0 +1,173 @@
+---
+title: "The American Presidency Project"
+author: "Kris Shaffer"
+date: "March 16, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This notebook details how to extract data from [The American Presidency Project](http://www.presidency.ucsb.edu/), a great website curating current and historical data from presidents and presidential campaigns.
+
+## Setup
+
+To get started, we need to load some libraries and define some functions.
+
+```{r}
+library(rvest)
+library(tidyverse)
+library(lubridate)
+```
+
+The ```deglaze()``` function will scrape content from the site, given a page ID, and do some minimal preprocessing (assemble title, date, and page text).
+
+```{r}
+deglaze <- function(page_id) {
+  page_data <- read_html(paste('http://www.presidency.ucsb.edu/ws/index.php?pid=', page_id, sep = ''))
+  page_title <- page_data %>%
+    html_node('title') %>%
+    html_text()
+  page_date <- page_data %>%
+    html_node('.docdate') %>%
+    html_text() %>%
+    mdy() %>%
+    as.character()
+  page_text <- page_data %>%
+    html_nodes('p') %>%
+    html_text() %>%
+    paste(collapse = ' ')
+  return(as_tibble(cbind(title = page_title, date = page_date, text = page_text)))
+}
+```
+
+The following functions will be used to extract page IDs from pages on The APP website containing a list of links, and to extract a president's name from the title of the page.
+
+```{r}
+# function to extract text from hyperlink (as character)
+extract_link_title <- function(anchor_tag) {
+  return(unlist(strsplit(unlist(strsplit(anchor_tag, '>'))[2], '<'))[1])
+}
+
+# function to extract target URL from hyperlink (as character)
+extract_link_page_id <- function(anchor_tag) {
+  return(c(unlist(strsplit(unlist(strsplit(anchor_tag, '?pid='))[2], '\">'))[1]))
+}
+
+# function to extract president's name from title
+extract_president <- function(title) {
+  return(unlist(strsplit(title, ':'))[1])
+}
+```
+
+## Scraping
+
+Now we're ready to start scraping and extracting data.
+
+Let's say we want all of Donald Trump's executive orders. The APP links resources by type and year. Here are all of the executive orders released in 2017: [http://www.presidency.ucsb.edu/executive_orders.php?year=2017&Submit=DISPLAY](http://www.presidency.ucsb.edu/executive_orders.php?year=2017&Submit=DISPLAY). We can grab all of the executive order links on this page and extract the page ID for each.
+
+```{r}
+exec_links <- read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2017&Submit=DISPLAY') %>%
+  html_nodes('a') %>%
+  as.character() %>%
+  as_tibble() %>%
+  unique() %>%
+  filter(grepl('../ws/index.php?pid=', value, fixed = TRUE)) %>%
+  mutate(title = mapply(extract_link_title, value),
+         page_id = mapply(extract_link_page_id, value)) %>%
+  select(title, page_id)
+```
+
+Then we can scrape the pages, select only those coming from the Trump administration, and save them to a tibble (tidy data frame).
+
+```{r}
+trump_orders <- mapply(deglaze, exec_links$page_id) %>%
+  t() %>%
+  as_tibble() %>%
+  unnest() %>%
+  mutate(president = mapply(extract_president, title)) %>%
+  filter(president == 'Donald J. Trump')
+```
+
+Follow the same process for [press briefings](http://www.presidency.ucsb.edu/press_briefings.php?year=2017&Submit=DISPLAY), [radio addresses](http://www.presidency.ucsb.edu/satradio.php?year=2017&Submit=DISPLAY), etc.
+
+Getting all of Barack Obama's executive orders requires more effort, since they span multiple years. But some full joins should do the trick.
+
+```{r}
+exec_links <- read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2009&Submit=DISPLAY') %>%
+  html_nodes('a') %>%
+  as.character() %>%
+  as_tibble() %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2010&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2011&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2012&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2013&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2014&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2015&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2016&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  full_join(read_html('http://www.presidency.ucsb.edu/executive_orders.php?year=2017&Submit=DISPLAY') %>%
+              html_nodes('a') %>%
+              as.character() %>%
+              as_tibble()) %>%
+  unique() %>%
+  filter(grepl('../ws/index.php?pid=', value, fixed = TRUE)) %>%
+  mutate(title = mapply(extract_link_title, value),
+         page_id = mapply(extract_link_page_id, value)) %>%
+  select(title, page_id)
+```
+
+With the links thus assembled, we can download the content the same way we did with Trump's orders.
+
+```{r}
+obama_orders <- mapply(deglaze, exec_links$page_id) %>%
+  t() %>%
+  as_tibble() %>%
+  unnest() %>%
+  mutate(president = mapply(extract_president, title)) %>%
+  filter(president == 'Barack Obama')
+```
+
+One of the great things about the APP is that it collects more than the official federal government sources. For example, they curate campaign speeches and press releases from candidates during presidential campaigns. Trump's team deleted the ones they had previously archived from his campaign website, but they are on the APP and easy to parse.
+
+The code to download these is the same (minus the January 21, 2017, start date filter), you just need the URL of the page with all of the speech links. Here's Trump 2016: [http://www.presidency.ucsb.edu/2016_election_speeches.php?candidate=45&campaign=2016TRUMP&doctype=5000](http://www.presidency.ucsb.edu/2016_election_speeches.php?candidate=45&campaign=2016TRUMP&doctype=5000). You can find all of the 2016 candidates' pages here: [http://www.presidency.ucsb.edu/2016_election.php](http://www.presidency.ucsb.edu/2016_election.php).
+
+```{r}
+trump_campaign_speech_links <- read_html('http://www.presidency.ucsb.edu/2016_election_speeches.php?candidate=45&campaign=2016TRUMP&doctype=5000') %>%
+  html_nodes('a') %>%
+  as.character() %>%
+  as_tibble() %>%
+  unique() %>%
+  filter(grepl('../ws/index.php?pid=', value, fixed = TRUE)) %>%
+  mutate(title = mapply(extract_link_title, value),
+         page_id = mapply(extract_link_page_id, value)) %>%
+  select(title, page_id)
+
+trump_campaign_speeches <- mapply(deglaze, trump_campaign_speech_links$page_id) %>%
+  t() %>%
+  as_tibble() %>%
+  unnest()
+```
+
+Once you have the data, you can use TidyText, tm, or other NLP packages to analyze the content and compare presidents/candidates. Have fun!
