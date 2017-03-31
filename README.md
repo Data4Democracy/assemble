@@ -13,8 +13,6 @@
 * [@sjackson](https://datafordemocracy.slack.com/messages/@sjackson/) (Subject Matter Knowledge)
 * [@wwymak](https://datafordemocracy.slack.com/messages/@wwymak/) (Community Detection, NLP)
 * [@henripal](https://datafordemocracy.slack.com/messages/@henripal/) (Assemble, Community Detection, NLP)
-* [@metame](https://datafordemocracy.slack.com/messages/@metame/) (collect-Social)
-* [@asragab](https://datafordemocracy.slack.com/messages/@asragab/) (collect-social, assemble, data engineering)
 * [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/) (collect-social, onboarding, tutorials, twitter-analysis)
 
 
@@ -53,14 +51,15 @@ If you like the idea of building tools that will help enable analysis across man
 Leveraging the Infrastructure group's fantastic work, the Curation team makes available repositories of information about online communities. The data is "analysis ready" and has been curated to support downstream analytical objectives, and the team works closely with the data.world staff.  
 
 ### Infrastructure Repositories
+* [smtk](https://github.com/Data4Democracy/smtk): Ambitious attempt to combine all below projects + more into single toolkit.
 * [Discursive](https://github.com/Data4Democracy/discursive): Framework for searching or streaming tweets storing them in Elasticsearch and S3.
 * [Collect-Social](https://github.com/Data4Democracy/collect-social): This project aims to make that collection process as simple as possible, by making some common-sense assumptions about what most researchers need, and how they like to work with their data. For example, tasks like grabbing all the posts and comments from a handful of Facebook pages, and dumping the results into a sqlite database.
-* [Reddit-Api-Miner](https://github.com/Data4Democracy/reddit-api-miner) to be folded in with [Collect-Social](https://github.com/Data4Democracy/collect-social)
+* [Reddit-Api-Miner](https://github.com/Data4Democracy/reddit-api-miner) No longer active. Reddit integration is on the roadmap for smtk.
 
 #### Data pipeline  
-We are looking for people to take our raw data and curate it so that it is analysis ready. You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. [Eventador](http://eventador.io/) has gracioulsy donated infrastructure to assist with this effort.  
+We are looking for people to take our raw data and curate it so that it is analysis ready. You will work closely with the the person(s) who gathered the data to understand methodologies for how the data was gathered to help document the end to end data cleaning process for future analysts. [Eventador](http://eventador.io/) has gracioulsy donated infrastructure to assist with this effort.
 
-**Additional Resource:**
+**Additional Resources:**
 * Getting started with [Eventador](./eventador/README.md)
 * See [DATA GOVERNANCE](https://github.com/Data4Democracy/read-this-first/blob/master/governance.md).
 
@@ -84,4 +83,4 @@ We need people who would like to write [tutorials](https://github.com/Data4Democ
 
 
 
-Special thanks to the drug-spending team for writing such a great README that we had to borrow liberally from it
+Special thanks to the drug-spending team for writing such a great README we borrowed liberally from it
