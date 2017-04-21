@@ -1,0 +1,290 @@
+---
+title: "Parsing 8chan API data"
+output: html_notebook
+---
+
+This notebook walks through the process of cleaning and wrangling data from the 8chan API (downloadable from D4D's far-right repository on data.world). 
+
+## Getting started
+
+First, load some libraries. (Install first, if necessary.)
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(lubridate)
+library(stringr)
+library(RSQLite)
+library(rvest)
+```
+
+And create a few functions needed for extracting text and URLs from the posts.
+
+```{r}
+# some data wrangling functions
+
+extract_domain <- function(url) {
+  return(tolower(gsub('www.', '', unlist(strsplit(unlist(strsplit(as.character(url), '//'))[2], '/'))[1], ignore.case = TRUE)))
+}
+
+extract_html_text <- function(content) {
+  if (substring(content, 1, 1) == '<') {
+    return(content %>% read_html() %>% html_text())
+  } else {
+    return(paste('<p>', content, '</p>', sep='') %>% read_html() %>% html_text())
+  }
+}
+
+extract_hrefs <- function(content) {
+  if (substring(content, 1, 1) == '<') {
+    return(content %>% read_html() %>% html_nodes('a') %>% html_attr('href') %>% as_tibble())
+  } else {
+    return(paste('<p>', content, '</p>', sep='') %>% read_html() %>% html_nodes('a') %>% html_attr('href') %>% as_tibble())
+  }
+}
+```
+
+## Loading and transforming the data
+
+After downloading the file `8ch.db` from data.world and putting it into your working directory, use RSQLite to read it into a tibble (tidy data frame).
+
+```{r}
+# load the database and extract text and hrefs
+con <- RSQLite::dbConnect(drv = SQLite(), dbname = '8ch.db')
+
+# make database into a tibble and extract text/links from HTML
+chan8 <- as_tibble(dbGetQuery(con, 'select * from threads')) %>%
+  mutate(text = mapply(extract_html_text, com),
+         link = mapply(extract_hrefs, com))
+
+# change dates into a format that is human-readable and lubridate-friendly
+class(chan8$modified) <- 'POSIXct'
+
+chan8
+```
+
+The 8chan API seems to be adding a "new" post to the API database any time there is an update. For most analytical purposes, we need to collapse all of those versions into one. The following code will find every version of each unique post, and keep only the *first* one. (I went with the first in order to keep everything associated with the original date of publication. If your research requires keeping all of the content, or getting the *latest* version, update the code as appropriate.) 
+
+`chan8` will remain as the original source, but now an additional tibble `c8` will be available that contains only the first version of each unique post.
+
+```{r}
+chan8_unique_threads <- chan8 %>%
+  select(no, board, modified) %>%
+  group_by(no, board) %>%
+  summarize(modified = first(modified))
+
+c8 <- chan8_unique_threads %>%
+  inner_join(chan8)
+
+c8
+```
+
+
+## Analyzing link content
+
+To analyze the external content shared on 8chan, we need to do some additional wrangling. When extracting links above, all of the links contained in a post where assembled into a list. We just need to unnest that list. (Note that this will duplicate post content and metadata, so keep using `c8` to analyze post content and only use the `chan8_links` tibble we're about to create for analyzing links.) We'll also extract the root domain from those URLs at the same time.
+
+```{r}
+chan8_links <- c8 %>% 
+  unnest() %>%
+  mutate(domain = mapply(extract_domain, link))
+
+chan8_links
+```
+
+With the links unnested and domains extracted, we can count how many times each URL and domain occurs in the database and arrange them in descending order to find the most commonly shared URLs and the most commonly cited sources of information.
+
+```{r}
+# count root domains, identify most shared domains
+chan8_domain_count <- chan8_links %>% 
+  group_by(domain) %>% 
+  summarize(count = n()) %>% 
+  arrange(desc(count)) %>% 
+  filter(!is.na(domain))
+
+chan8_domain_count
+```
+
+
+```{r}
+# count URLs, identify most shared URLs
+chan8_url_count <- chan8_links %>% 
+  group_by(link) %>% 
+  summarize(count = n()) %>% 
+  arrange(desc(count)) %>% 
+  filter(!is.na(link))
+
+chan8_url_count
+```
+
+
+## Save your work
+
+Since it takes a *long* time to process this info, let's save the results.
+
+```{r}
+# save some output
+write_rds(c8, '8ch.rds') # since one of the columns is a list, we need rds instead of csv
+write_csv(chan8_links, '8ch_urls_domains.csv')
+write_csv(chan8_url_count, '8ch_url_count.csv')
+write_csv(chan8_domain_count, '8ch_domain_count.csv')
+```
+
+You might also want to save the session, so you can save time reloading everything after quitting R.
+
+```{r}
+save.image('8ch.RData')
+```
+
+
+## Tokenize
+
+To analyze the text content, it is helpful to tokenize it by word or n-gram using `tidytext`.
+
+```{r}
+# tokenize by word
+cw <- chan8 %>%
+  select(name, sub, thread, board, modified, text) %>%
+  mutate(text = str_replace_all(text, "https://[A-Za-z\\d\\/]+|http://[A-Za-z\\d\\/]+|&amp;|&lt;|&gt;|https", ""),
+         text = str_replace_all(text, ">*\\d*", "")) %>%
+  unnest_tokens(word, text) %>%
+  filter(!word %in% stop_words$word,
+         str_detect(word, "[a-z]"))
+
+# display the ten most frequent words (excluding stop words)
+cw %>%
+  group_by(word) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+
+```{r}
+# tokenize by bigram
+cb <- c8 %>%
+  select(name, sub, thread, no, board, modified, text) %>%
+  mutate(text = str_replace_all(text, "https://[A-Za-z\\d\\/]+|http://[A-Za-z\\d\\/]+|&amp;|&lt;|&gt;|https", ""),
+         text = str_replace_all(text, ">*\\d*", "")) %>%
+  unnest_tokens(bigram, text, token = 'ngrams', n = 2) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(!word1 %in% stop_words$word, # remove stop words
+         !word2 %in% stop_words$word, # remove stop words
+         str_detect(word1, "[a-z]"), # remove words containing ony numbers or symbols
+         str_detect(word2, "[a-z]")) %>% # remove words containing ony numbers or symbols
+    unite(bigram, word1, word2, sep = ' ')
+
+
+# save and display the ten most frequent bigrams (not containing stop words)
+cbsort <- cb %>%
+  group_by(bigram) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+
+cbsort
+```
+
+Save the output, if you want to compe back to it later.
+
+```{r}
+# save tokenized and sorted output
+write_csv(cw, '8ch_words.csv')
+write_csv(cb, '8ch_bigrams.csv')
+write_csv(cbsort, '8ch_bigrams_sorted.csv')
+
+```
+
+
+## Analyze link posts over time
+
+Let's automatically pull the 5 most frequently shared links in the database and plot the number of posts containing them over time, binned by day.
+
+```{r}
+# extract the five most commonly shared links (without a couple common obfuscations)
+link_to_search <- chan8_url_count[!grepl('archive.', chan8_url_count$link),][!chan8_url_count$link %in% c('http://www', 'https://www'),][1:5,1]
+
+# plot the number of shares per day, for each of those five URLs, beginning on Feb 1, 2017
+chan8_links %>%
+  mutate(time_floor = floor_date(modified, unit = "1 day")) %>%
+  filter(link %in% link_to_search$link,
+         time_floor >= '2017-02-01') %>%
+  group_by(time_floor, link) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, color = link)) +
+  geom_line() +
+  xlab('Date') +
+  ylab('Number of posts') +
+  ggtitle('Shares on 8chan of top five URLs over time, by day:')
+```
+
+
+To do the same for a single URL, or a manually created list, just switch out `link_to_search$link` for the URL you're interested in.
+
+
+## Explore text content over time
+
+We can identify a few popular bigrams from the analysis above, and then plot their frequency of occurrence over time. This is helpful for comparing shifts in popular trends. Here is a line plot comparing three popular bigrams, 'donald trump', 'le pen', and 'white people'. (Note that `tidytext` converts everything to lower case, so search for lower case text in this database is case-insensitive.)
+
+```{r}
+# plot posts containing most popular bigrams
+cb %>%
+  mutate(time_floor = floor_date(modified, unit = "1 day")) %>%
+  filter(bigram %in% c('donald trump', 'le pen', 'white people'),
+         time_floor >= '2017-01-01') %>%
+  group_by(time_floor, bigram) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, color = bigram)) +
+  geom_line() +
+  xlab('Date') +
+  ylab('Number of posts') +
+  ggtitle('Daily posts on 8chan')
+```
+
+
+## Cross-analyze text and URLs
+
+To analyze links and bigrams together, we need to merge the bigram and URL tables together. (Keep in mind that we kept them separate in order not to duplicate text when unnesting URLs, and then performing text analysis on a set with too many duplicates.)
+
+```{r}
+# merge links and bigrams for cross-analysis
+cb_links <- cb %>%
+  inner_join(chan8_links)
+
+write_csv(cb_links, '8ch_bigrams_with_links.csv')
+
+cb_links
+```
+
+Now we can look for all of the URLs in a post containing a specific bigram. For example, all of URLs linked in a post that contains the bigram 'le pen'.
+
+```{r}
+lp <- cb_links %>%
+  filter(grepl('le pen', bigram))
+
+lp
+```
+
+Which of those are the most common?
+
+```{r}
+lp_domains <- lp %>%
+  group_by(link) %>%
+  summarize(count = n()) %>%
+  filter(!is.na(link)) %>%
+  arrange(desc(count))
+
+lp_domains
+```
+
+
+And what root domains do they tend to come from?
+
+```{r}
+lp_domains <- lp %>%
+  group_by(domain) %>%
+  summarize(count = n()) %>%
+  filter(!is.na(domain)) %>%
+  arrange(desc(count))
+
+lp_domains
+```
+
