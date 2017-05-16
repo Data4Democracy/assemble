@@ -19,15 +19,19 @@ class Bounty(scrapy.Item):
     # Contributions
     min_bounty = scrapy.Field()
     cur_bounty = scrapy.Field()
-    num_contrib = scrapy.Field()
     time_rem = scrapy.Field()
 
-    # About
+    # List of Actual Contributions
+    contributions = scrapy.Field()
+
+    # About - Text Fields, may contain links
     goal = scrapy.Field()
     why = scrapy.Field()
     requirements = scrapy.Field()
 
-    # Lists
+    # List of Updates
     updates = scrapy.Field()
-    contributions = scrapy.Field()
+
+    # List of Links within About Fields,
+    # Updates, and Contribution Comments
     content_links = scrapy.Field()
