@@ -51,6 +51,7 @@ If you like the idea of building tools that will help enable analysis across man
 Leveraging the Infrastructure group's fantastic work, the Curation team makes available repositories of information about online communities. The data is "analysis ready" and has been curated to support downstream analytical objectives, and the team works closely with the data.world staff.  
 
 ### Infrastructure Repositories
+* [town-council](https://github.com/bstarling/town-council): Tools to scrape and centralize the text of meeting agendas & minutes from local city governments.
 * [smtk](https://github.com/Data4Democracy/smtk): Ambitious attempt to combine all below projects + more into single toolkit.
 * [Discursive](https://github.com/Data4Democracy/discursive): Framework for searching or streaming tweets storing them in Elasticsearch and S3.
 * [Collect-Social](https://github.com/Data4Democracy/collect-social): This project aims to make that collection process as simple as possible, by making some common-sense assumptions about what most researchers need, and how they like to work with their data. For example, tasks like grabbing all the posts and comments from a handful of Facebook pages, and dumping the results into a sqlite database.
